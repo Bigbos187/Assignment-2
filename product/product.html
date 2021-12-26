@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Product</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+
+    <link rel="stylesheet" href="../style.css/style.css">
+
+</head>
+
+<body>
+    <section class="header" id="fullmenu">
+        <nav class="navbar navbar-expand-lg d-flex navbarcss">
+            <div class="col-12 col-md-2 col-lq-2 logo"> Tam|Vo</div>
+            <div class="container-fluid col-6 col-md-8 col-lq-8">
+                <i class="fa-solid fa-bars navbar-toggler menu-toggle" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></i>
+                <div class="collapse navbar-collapse justify-content-center menu-item" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link " aria-current="page" href="../index.html">Home</a>
+                        <a class="nav-link activecss" href="">Product</a>
+                        <a class="nav-link" href="../admin/list_product.html">Admin</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 col-md-1 col-lq-1 login" id="login"> </div>
+            <div class="col-2  col-md-1 col-lq-1  cart"><a href="../cart/cart.html"><i class="fa-solid fa-cart-shopping"><span id="total-quantity"></span></i></a></div>
+        </nav>
+    </section>
+    <!-- <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner slideshow">
+                <div class="carousel-item active bg-danger">
+                    <img src="img/slideshow1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/slideshow2.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </section> -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content ">
+                <div class="modal-header justify-content-center">
+
+                    <h5 class="modal-title  fw-bolder fs-1" id="exampleModalLabel">Login</h5>
+
+                </div>
+                <div class="modal-body ">
+                    <form id="login_form">
+                        <div class="form-floating row m-5">
+                            <input type="email" class="form-control" id="email-login" placeholder="email" require>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-floating row m-5">
+                            <input type="password" class="form-control" id="password-login" placeholder="password" require>
+                            <label for="password">password</label>
+                        </div>
+                        <div class="mb-3 form-check m-5">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+
+                        <div class=" row justify-content-center d-flex m-5">
+                            <div class="col-3 ">
+                                <a href="../index.html " class="float-end ">Exit</a>
+                            </div>
+                            <div class="col-3 btn-submit">
+                                <button class="btn btn-primary w-100 inputspace " type="submit ">login</button>
+                            </div>
+                            <div class="col-3 ">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#register">Sign up</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class=" modal w-100" id="register" tabindex="-1" aria-labelledby="openregister" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  ">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title  fw-bolder fs-1" id="exampleModalLabel">Register</h5>
+                </div>
+                <div class="modal-body ">
+
+                    <form id="register_form">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating g-1 ">
+                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
+                                    <label for="floatingInput ">First name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating g-1 ">
+                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
+                                    <label for="floatingInput ">Last name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 d-flex align-items-center">
+                                <div class="form-floating g-1 ">
+                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
+                                    <label for="floatingInput ">Birth day</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h6 class="mb-2 pb-1">Gender: </h6>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" checked />
+                                    <label class="form-check-label" for="femaleGender">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
+                                    <label class="form-check-label" for="maleGender">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender" value="option3" />
+                                    <label class="form-check-label" for="otherGender">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-floating g-1 row">
+                                    <input type="email" class="form-control" id="email" placeholder="email" require>
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-floating g-1 ">
+                                    <input type="email " class="form-control inputspace " id="floatingInput" placeholder=" ">
+                                    <label for="floatingInput ">Phone</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class=" col justify-content-center ">
+                                    <div class="form-floating g-1 row ">
+                                        <input type="password" class="form-control" id="password" placeholder="password" require>
+                                        <label for="password">password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating g-1 row">
+                                    <input type="password" class="form-control" id="password" placeholder="password" require>
+                                    <label for="password">Confirm password</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-2">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                        </div>
+                    </form>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content ">
+                <div class="modal-header justify-content-center">
+
+                    <h5 class="modal-title  fw-bolder fs-1" id="exampleModalLabel">Profile</h5>
+
+                </div>
+                <div class="modal-body ">
+                    hello
+                </div>
+                <div class="text-center border-top p-3">
+                    <button type="button" class="btn btn-primary" onclick="not_login_yet()">Log out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container  col col-lg-10 ">
+
+        <div class="row product-list-adidas" id="product-list-adidas">
+            <div class="logo-item text-center pb-3"><img src="../img/logoadidas.png" alt=""> </div>
+        </div>
+        <div class="row product-list-nike mt-5" id="product-list-nike">
+            <div class="logo-item text-center pb-3"><img src="../img/nike_logo.png" alt=""> </div>
+        </div>
+
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/js.js">
+    </script>
+    <script>
+        window.onload = function() {
+            create_database();
+            fetch_database();
+            check_login();
+            get_product();
+            update_cart_quantity();
+        };
+        document.getElementById("register_form").onsubmit = register;
+        document.getElementById("login_form").onsubmit = log_in;
+    </script>
+</body>
+
+</html>
