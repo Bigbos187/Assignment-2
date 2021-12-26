@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="col-2 col-md-1 col-lq-1 "><a href="add_product.html" class="btn btn-dark"><i class="fa-solid fa-plus"></i> Product</a></div>
+            <div class="col-2 col-md-1 col-lq-1 "><a href="add_product.html" class="btn btn-dark btn-sm"><i class="fa-solid fa-plus"></i> Product</a></div>
             <div class="col-2  col-md-1 col-lq-1"></div>
         </nav>
     </section>
@@ -65,9 +65,10 @@
 
         function get_product() {
             db.transaction(function(tx) {
-                var query = ` SELECT * FROM product`;
+                var query = ` SELECT p.id, p.name, p.price, c.name as category_name FROM product p, category c 
+                              WHERE p.category_id = c.id
+                              ORDER BY c.name`;
                 tx.executeSql(query, [], function(tx, result) {
-                    console.log(result.rows);
                     show_all_item(result.rows);
                 }, transaction_error);
             });
@@ -81,8 +82,8 @@
                             <td>${product.id}</td>
                             <td>${product.name}</td>
                             <td>${product.price}</td>
-                            <td>${product.category_id}</td>
-                            <td> <button class="btn btn-danger" id = "${product.id}"  onClick="delete_in_list(this.id)"> delete </button> </td>
+                            <td>${product.category_name}</td>
+                            <td>  <i class="fas fa-trash-alt btn btn-danger btn-sm" id="${product.id}" onclick="delete_in_list(this.id)"></i></td>
                          </tr>`;
             }
 

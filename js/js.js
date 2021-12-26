@@ -81,7 +81,7 @@ function show_nike(products) {
                                     <div>
                                         <h5>${product.price}$</h5>
                                     </div>
-                                    <div><button type="button" onclick="add_to_cart(this.id)" id="${product.id}" class="btn btn-dark"><i class="fa-solid fa-cart-plus"></i> </button> </div>
+                                    <div><button type="button" onclick="add_to_cart(this.id)" id="${product.id}" class="btn btn-dark"><i class="fa-solid fa-cart-plus"></i> </button></div>
                                 </div>
                             </div>`;
     }
@@ -154,12 +154,15 @@ function update_cart_quantity() {
 
 function register(e) {
     e.preventDefault();
+    var first_name = document.getElementById("first_name").value;
+    var last_name = document.getElementById("last_name").value;
+    // alert(last_name);
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
     db.transaction(function(tx) {
-        var query = ` INSERT INTO account(email,password) VALUES(?, ?)`;
-        tx.executeSql(query, [email, password], function(tx, result) {
+        var query = ` INSERT INTO account(first_name, last_name, email,password) VALUES(?, ?, ?, ?)`;
+        tx.executeSql(query, [first_name, last_name, email, password], function(tx, result) {
             var message = `insert account successfully`;
             log(`INFOR`, message);
         }, transaction_error);
@@ -247,11 +250,11 @@ function show_all_cart(products) {
                                 <td>${product.quantity}</td>
                                 <td>${total} $</td>
                                 <td>
-                                    <i class="fas fa-trash-alt btn" id="${product.id}" onclick=" delete_and_update(this.id)"></i>
+                                    <i class="fas fa-trash-alt btn btn-danger btn-sm" id="${product.id}" onclick="delete_and_update(this.id); update_total_price();"></i>
                                 </td>
                          </tr>`;
         }
-        all_item_cart.innerHTML += `<tr id="${product.id}_cart">
+        all_item_cart.innerHTML += `<tr id="total_bill">
                                 <td></td>
                                 <td></td>
                                 <td>Total bill</td>
@@ -260,6 +263,32 @@ function show_all_cart(products) {
                                 </td></tr>`;
     }
 
+}
+
+function update_total_price() {
+    var total_bill = document.getElementById(`total_bill`);
+    var account_id = localStorage.getItem("account_id");
+    db.transaction(function(tx) {
+        var query = ` SELECT p.price, c.quantity FROM cart c, product p 
+                      WHERE c.product_id = p.id and c.account_id= ? `;
+        tx.executeSql(query, [account_id], function(tx, result) {
+            var message = `select cart successfully`;
+            log(`INFOR`, message);
+            var total_all = 0;
+            for (var product of result.rows) {
+                var total = product.price * product.quantity;
+                total_all += total;
+            }
+            total_bill.outerHTML = `<tr id="total_bill">
+                                <td></td>
+                                <td></td>
+                                <td>Total bill</td>
+                                <td id="total_bill">${total_all} $</td>
+                                <td>
+                                </td></tr>`;
+
+        }, transaction_error);
+    });
 }
 
 function delete_and_update(id) {
@@ -281,6 +310,20 @@ function delete_in_cart_database(id) {
 
 function delete_product_cart(id) {
     var item_delete = document.getElementById(`${id}_cart`);
-    console.log(item_delete);
     item_delete.outerHTML = ``;
+}
+
+function profile() {
+    var id = localStorage.getItem("account_id");
+    var inf = document.getElementById("profile_user");
+    db.transaction(function(tx) {
+        var query = " SELECT * FROM Account WHERE id = ?";
+        tx.executeSql(query, [id],
+            function(tx, result) {
+                var message = `get inf successfully`;
+                log(`INFOR`, message);
+                inf.innerHTML = `<h3 class="text-center mb-3">Hello ${result.rows[0].first_name}!</h3>
+                               <div class="text-center">Email: ${result.rows[0].email} </div>`;
+            }, transaction_error)
+    });
 }

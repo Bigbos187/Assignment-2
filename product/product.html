@@ -111,51 +111,22 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-floating g-1 ">
-                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
-                                    <label for="floatingInput ">First name</label>
+                                    <input type="text " class="form-control " id="first_name" placeholder="first_name">
+                                    <label for="first_name">First name</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-floating g-1 ">
-                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
-                                    <label for="floatingInput ">Last name</label>
+                                    <input type="text " class="form-control " id="last_name" placeholder="last_name">
+                                    <label for="last_name">Last name</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-4 d-flex align-items-center">
-                                <div class="form-floating g-1 ">
-                                    <input type="email " class="form-control inputspace " id="floatingInput " placeholder=" ">
-                                    <label for="floatingInput ">Birth day</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <h6 class="mb-2 pb-1">Gender: </h6>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" checked />
-                                    <label class="form-check-label" for="femaleGender">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
-                                    <label class="form-check-label" for="maleGender">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender" value="option3" />
-                                    <label class="form-check-label" for="otherGender">Other</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-4 pb-2">
+                            <div class="col mb-4 pb-2">
                                 <div class="form-floating g-1 row">
                                     <input type="email" class="form-control" id="email" placeholder="email" require>
                                     <label for="email">Email</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4 pb-2">
-                                <div class="form-floating g-1 ">
-                                    <input type="email " class="form-control inputspace " id="floatingInput" placeholder=" ">
-                                    <label for="floatingInput ">Phone</label>
                                 </div>
                             </div>
                         </div>
@@ -179,9 +150,6 @@
                             <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
                         </div>
                     </form>
-
-
-
                 </div>
 
             </div>
@@ -196,7 +164,8 @@
 
                 </div>
                 <div class="modal-body ">
-                    hello
+                    <div id="profile_user">
+                    </div>
                 </div>
                 <div class="text-center border-top p-3">
                     <button type="button" class="btn btn-primary" onclick="not_login_yet()">Log out</button>
@@ -226,6 +195,7 @@
             check_login();
             get_product();
             update_cart_quantity();
+            profile();
         };
         document.getElementById("register_form").onsubmit = register;
         document.getElementById("login_form").onsubmit = log_in;
