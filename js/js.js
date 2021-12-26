@@ -174,6 +174,7 @@ function check_login() {
     var check = localStorage.getItem("account_email");
     if (check) {
         logged();
+        profile();
     } else {
         not_login_yet();
     }
