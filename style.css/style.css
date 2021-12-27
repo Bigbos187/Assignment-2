@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans&family=Major+Mono+Display&display=swap');
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Expletus Sans', cursive;
     margin: 0;
     padding: 0;
     box-sizing: border-box !important;
@@ -23,26 +25,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    color: rgb(61, 60, 60);
+    color: rgb(0, 0, 0);
     transition: 0.3s;
     height: 60px;
     box-shadow: -2px 0.5px 2px grey;
+}
+
+.logo a {
+    font-family: 'Major Mono Display', monospace;
+    font-weight: bolder;
+    font-size: 30px;
+    text-decoration: none;
+    color: #000;
 }
 
 .navbarcss {
     padding: 0 !important;
     background-color: #fff;
     box-shadow: 0.5px 0.5px 2px grey;
-    /* z-index: 10; */
 }
 
 .menu-item a {
     padding: 0;
     padding: 0 30px !important;
     color: black !important;
+    font-family: 'Expletus Sans', cursive;
     font-size: large;
     display: flex;
     align-items: center;
