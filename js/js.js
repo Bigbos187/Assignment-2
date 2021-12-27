@@ -138,9 +138,9 @@ function update_cart_quantity() {
             var message = `Update total item from cart successfully`;
             log(`INFOR`, message);
             if (result.rows[0].total > 0) {
-                document.getElementById("total-quantity").innerHTML = `(${result.rows[0].total})`
+                document.getElementById("total-quantity").innerHTML = `${result.rows[0].total}`
             } else {
-                document.getElementById("total-quantity").innerHTML = `(0)`
+                document.getElementById("total-quantity").innerHTML = `0 `
             }
 
         }, transaction_error);
@@ -159,15 +159,19 @@ function register(e) {
     // alert(last_name);
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-
-    db.transaction(function(tx) {
-        var query = ` INSERT INTO account(first_name, last_name, email,password) VALUES(?, ?, ?, ?)`;
-        tx.executeSql(query, [first_name, last_name, email, password], function(tx, result) {
-            var message = `insert account successfully`;
-            log(`INFOR`, message);
-        }, transaction_error);
-    });
-
+    var password_confirm = document.getElementById("password_confirm").value;
+    if (password == password_confirm) {
+        db.transaction(function(tx) {
+            var query = ` INSERT INTO account(first_name, last_name, email,password) VALUES(?, ?, ?, ?)`;
+            tx.executeSql(query, [first_name, last_name, email, password], function(tx, result) {
+                var message = `insert account successfully`;
+                log(`INFOR`, message);
+                document.getElementById("inform").innerHTML = `<div>Register successfully. <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Please log in here!</a></div>`
+            }, check_account_available);
+        });
+    } else {
+        alert("Confirm password incorrect!");
+    }
 };
 
 function check_login() {
@@ -197,14 +201,21 @@ function log_in(e) {
                 document.getElementById("login").innerHTML = `<button type="button" data-bs-toggle="modal" data-bs-target="#profile"><i class="fa-solid fa-user-check"></i></button>`;
                 update_cart_quantity();
                 get_all_cart();
+                profile();
             } else {
                 alert("Log in fail!");
                 localStorage.setItem("account_email", "");
             }
         }, transaction_error);
     });
-
 };
+
+function check_account_available() {
+
+    alert("Your email is available!");
+
+}
+
 
 function logged() {
     document.getElementById("login").innerHTML = `<button type="button" data-bs-toggle="modal" data-bs-target="#profile"><i class="fa-solid fa-user-check"></i></button> `;
@@ -212,11 +223,10 @@ function logged() {
 
 function not_login_yet() {
     $("#profile").modal("hide");
-    document.getElementById("total-quantity").innerHTML = `(0)`
+    document.getElementById("total-quantity").innerHTML = `0`
     localStorage.setItem("account_email", "");
     localStorage.setItem("account_id", "");
     document.getElementById("login").innerHTML = `<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class = "fa-solid fa-arrow-right-to-bracket"></i></button> `;
-
     var item_cart = document.getElementById("all_item_cart");
     if (item_cart) {
         item_cart.innerHTML = ``;
@@ -323,8 +333,13 @@ function profile() {
             function(tx, result) {
                 var message = `get inf successfully`;
                 log(`INFOR`, message);
-                inf.innerHTML = `<h3 class="text-center mb-3">Hello ${result.rows[0].first_name}!</h3>
+                if (result.rows[0].first_name) {
+                    inf.innerHTML = `<h3 class="text-center mb-3">Hello ${result.rows[0].first_name}!</h3>
                                <div class="text-center">Email: ${result.rows[0].email} </div>`;
+                } else {
+                    inf.innerHTML = `<h3 class="text-center mb-3">Hello!</h3>
+                               <div class="text-center">Email: ${result.rows[0].email} </div>`;
+                };
             }, transaction_error)
     });
 }

@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-2 col-md-1 col-lq-1 login" id="login"> </div>
-            <div class="col-2  col-md-1 col-lq-1  cart"><a href="../cart/cart.html"><i class="fa-solid fa-cart-shopping"><span id="total-quantity"></span></i></a></div>
+            <div class="col-2  col-md-1 col-lq-1  cart"><a href="cart.html"><i class="fa-solid fa-cart-shopping"><span id="total-quantity" class="total-quantity "></span></i></a></div>
         </nav>
     </section>
     <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,17 +42,17 @@
 
                 </div>
                 <div class="modal-body ">
-                    <form id="login_form">
+                    <form id="login_form" class="needs-validation">
                         <div class="form-floating row m-5">
-                            <input type="email" class="form-control" id="email-login" placeholder="email" require>
+                            <input type="email" class="form-control" id="email-login" placeholder="email" required>
                             <label for="email">Email</label>
                         </div>
                         <div class="form-floating row m-5">
-                            <input type="password" class="form-control" id="password-login" placeholder="password" require>
+                            <input type="password" class="form-control" id="password-login" placeholder="password" required>
                             <label for="password">password</label>
                         </div>
                         <div class="mb-3 form-check m-5">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
 
@@ -61,10 +61,10 @@
                                 <a href="../index.html " class="float-end ">Exit</a>
                             </div>
                             <div class="col-3 btn-submit">
-                                <button class="btn btn-primary w-100 inputspace " type="submit ">login</button>
+                                <button class="btn btn-primary w-100 inputspace " type="submit ">Login</button>
                             </div>
                             <div class="col-3 ">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#register">Sign up</button>
+                                <button type="button" class="btn-dark btn btn-sm" data-bs-toggle="modal" data-bs-target="#register">Sign up</button>
                             </div>
                         </div>
                     </form>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="modal-body ">
 
-                    <form id="register_form">
+                    <form id="register_form" class="needs-validation">
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-floating g-1 ">
@@ -100,8 +100,11 @@
                         <div class="row">
                             <div class="col mb-4 pb-2">
                                 <div class="form-floating g-1 row">
-                                    <input type="email" class="form-control" id="email" placeholder="email" require>
+                                    <input type="email" class="form-control" id="email" placeholder="email" required>
                                     <label for="email">Email</label>
+                                    <div class="invalid-feedback">
+                                        Please enter your email.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -109,20 +112,23 @@
                             <div class="col-md-6 mb-4">
                                 <div class=" col justify-content-center ">
                                     <div class="form-floating g-1 row ">
-                                        <input type="password" class="form-control" id="password" placeholder="password" require>
+                                        <input type="password" class="form-control" id="password" placeholder="password" required>
                                         <label for="password">password</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-floating g-1 row">
-                                    <input type="password" class="form-control" id="password" placeholder="password" require>
-                                    <label for="password">Confirm password</label>
+                                    <input type="password" class="form-control" id="password_confirm" placeholder="password_confirm" required>
+                                    <label for="password_confirm">Confirm password</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 pt-2">
-                            <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                        <div class="mt-4 pt-2" id="inform">
+                            <!-- <div>Register successfully. <button type="button" class="btn-dark btn btn-sm" data-bs-toggle="modal" data-bs-target="#register">Please log in here!</button></div> -->
+                        </div>
+                        <div class="mt-4 pt-2 row  justify-content-center">
+                            <input class="btn btn-primary btn-lg col-3 text-center" type="submit" value="Submit" />
                         </div>
                     </form>
                 </div>
@@ -148,7 +154,6 @@
             </div>
         </div>
     </div>
-
     <div class="cart-place row justify-content-center">
         <div class="detail col-lg-9 ">
             <table class="table table-striped text-center">

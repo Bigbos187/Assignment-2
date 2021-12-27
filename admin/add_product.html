@@ -36,7 +36,7 @@
     <form class="add-product col-sm-12 col-sm-8 col-lg-6 " id="add-product">
         <div> <a href="list_product.html" class="btn btn-dark m-2">Back</a></div>
         <div class="form-floating row m-2">
-            <input type="text" class="form-control" id="name" placeholder="Name" require>
+            <input type="text" class="form-control" id="name" placeholder="Name" required>
             <label for="name">name</label>
         </div>
         <div class="form-floating row m-2">
@@ -44,15 +44,18 @@
             <label for="description">description</label>
         </div>
         <div class="form-floating row m-2">
-            <input type="number" class="form-control" id="price" placeholder="price" require>
+            <input type="number" class="form-control" id="price" placeholder="price" required>
             <label for="price">price</label>
         </div>
         <div class="form-floating row m-2">
-            <select id="category" class="form-select" require>
+            <select id="category" class="form-select" required>
                 <option value="">Please choose category</option>
                 <option value=1 >Adidas</option>
                 <option value=2 >Nike</option>
             </select>
+        </div>
+        <div class="form-floating row m-2 justify-content-center " id="announce">
+
         </div>
         <div class="form-floating row m-2 justify-content-center ">
             <button type="submit" class="btn btn-primary col-2">Add</button>
@@ -82,8 +85,11 @@
 
                 tx.executeSql(query, [name, description, price, category],
                     function(tx, result) {
+                        document.getElementById("add-product").reset();
+                        document.getElementById("name").focus();
                         var message = `insert ${name} successfully`;
                         log(`INFOR`, message);
+                        document.getElementById("announce").innerText = `Add product "${name}"" successfully!`;
                     }, transaction_error)
             });
         }
